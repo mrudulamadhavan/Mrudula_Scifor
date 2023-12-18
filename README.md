@@ -1,1 +1,1 @@
-## This repository contains the assignments and Projects done as part of Scifor Technologies internship.
+**This repository contains the assignments and Projects done as part of Scifor Technologies internship.**
