@@ -13,7 +13,7 @@ st.set_page_config(page_title="Bike Sharing Demand Predictor", page_icon="https:
                    layout="wide")
 
 #import model
-st.title(":red[Bike Sharing Demand Predictor]")
+st.title(":red[  Bike Sharing Demand Predictor  ]")
 
 #resources path
 
@@ -28,7 +28,7 @@ st.image(img)
 DATA_PATH = os.path.join(dir_of_interest, "data")
 
 #Load data
-DATA_PATH1=os.path.join(DATA_PATH, "BikeData.csv")
+DATA_PATH1=os.path.join(DATA_PATH, "bike_dataset.csv")
 df=pd.read_csv(DATA_PATH1,encoding='latin')
 df1 = df.copy
 
