@@ -58,10 +58,12 @@ elif (status == 'Summary'):
     img = image.imread(IMAGE_PATH3)
     st.image(img)   
     
-elif (status == 'Descriptive Statistics') :    
+elif (status == 'Descriptive Statistics') : 
+    st.write('For categorical attributes,')
     x = df.describe(include = "object")
     st.table(x)
-    y = df.describe().round(2).T
+    st.write('For numerical attributes,')
+    y = df.describe().T.round(2)
     st.table(y)
 else:
     for column in df.columns.tolist():
