@@ -32,7 +32,7 @@ DATA_PATH1=os.path.join(DATA_PATH, "bike_dataset.csv")
 df=pd.read_csv(DATA_PATH1)
 df1 = df.copy
 
-xgb = pickle.load(open('Project/xgb_model.pkl','rb'))
+xgb = pickle.load(open('miniproject/xgb_model.pkl','rb'))
 
 
 def prediction(season,month,weekday,hour,temperature,humidity,visibility,windspeed,solarrdn,rainfall,snowfall):
