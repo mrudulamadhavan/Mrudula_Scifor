@@ -8,7 +8,7 @@ st.header(":blue[Bike Sharing Demand Predictor]")
 
 
 #Adding Image
-FILE_DIR = os.path.dirname(os.path.abspath('"C://Users//Mrudula Madhavan//Desktop//scifor//Project//homepage.py"'))
+FILE_DIR = os.path.dirname(os.path.abspath('miniproject//Home.py'))
 dir_of_interest = os.path.join(FILE_DIR, "resources")
 IMAGE_PATH = os.path.join(dir_of_interest, "images")
 IMAGE_PATH1 = os.path.join(IMAGE_PATH, "homepage.jpeg")
