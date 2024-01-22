@@ -4,7 +4,7 @@ from matplotlib import image
 import os
 
 #Title of the home page
-st.header(":blue[Bike Sharing Demand Predictor]")
+st.title(":blue[Bike Sharing Demand Predictor]")
 
 
 #Adding Image
