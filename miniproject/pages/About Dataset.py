@@ -61,7 +61,7 @@ elif (status == 'Summary'):
 elif (status == 'Descriptive Statistics') :    
     x = df.describe(include = "object")
     st.table(x)
-    y = df.describe()
+    y = df.describe().round(2).T
     st.table(y)
 else:
     for column in df.columns.tolist():
