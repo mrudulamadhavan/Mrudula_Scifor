@@ -5,7 +5,7 @@ import plotly.express as px
 import os
 
 # absolute path to this file
-FILE_DIR = os.path.dirname(os.path.abspath("miniproject//pages//About.py"))
+FILE_DIR = os.path.dirname(os.path.abspath("miniproject//pages//Data Description.py"))
 
 # absolute path to this file's root directory
 PARENT_DIR = os.path.join(FILE_DIR, os.pardir)
@@ -25,8 +25,7 @@ st.write(' The critical challenge in bike rental systems is the accurate predict
 st.write('Addressing this dynamic aspect of urban mobility, influenced by factors like historical patterns and weather conditions, is crucial for the effective functioning of bike-sharing programs, emphasizing the need for innovative solutions to enhance overall system performance and user satisfaction.')
 st.write('Our primary goal is to address this challenge by creating a solution that forecasts bike demand, considering diverse factors such as city weather conditions and different times of the day.')
 
-st.write('Create a web application for bike-sharing demand prediction using Streamlit and Python')
-    
+   
 st.header(":green[About Dataset]")
 st.write("The Bike Sharing Demand dataset contains information about bike rental in Seoul from 2017-2018. It includes hourly observations of 14 attributes, such as the date, time, number of rented bikes, weather information (Temperature, Humidity, Windspeed, Visibility, Dewpoint, Solar radiation, Snowfall, Rainfall) and other factors that may influence bike rental demand.") 
 st.write('')
