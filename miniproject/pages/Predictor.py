@@ -117,7 +117,7 @@ def replace_weekday(weekday):
         return 6.0
     else:
         return 7.0
-df1['Weekday'] = df1['Weekday'].apply(replace_weekday).astype('float64')
+df['Weekday'] = df['Weekday'].apply(replace_weekday).astype('float64')
 sample['Weekday'] = sample['Weekday'].apply(replace_weekday).astype('float64')
 
 # Function to distribute hour
@@ -133,27 +133,27 @@ def distribute_hour(hour):
 
 # hour_map = {'Night': 1.0,"Morning":2.0,"Afternoon":3.0, "Evening":4.0}
 # Apply the hour function
-df1['Hour'] = df1['Hour'].apply(distribute_hour).astype('float64')         # .map(hour_map).astype('float64')
+df['Hour'] = df['Hour'].apply(distribute_hour).astype('float64')         # .map(hour_map).astype('float64')
 sample['Hour'] = sample['Hour'].apply(distribute_hour).astype('float64')      # .map(hour_map).astype('float64')
 
-df1['Month'] = df1['Month'].astype('float64')
+df['Month'] = df['Month'].astype('float64')
 sample['Month'] = sample['Month'].astype('float64')
 
-df1['Wind speed (m/s)'] = np.sqrt(df1['Wind speed (m/s)'])
+df['Wind speed (m/s)'] = np.sqrt(df['Wind speed (m/s)'])
 sample['Wind speed (m/s)'] = np.sqrt(sample['Wind speed (m/s)'])
 # Standardizing the required column
-df1['Temperature(°C)'] = StandardScaler().fit_transform(df1['Temperature(°C)'].values.reshape(-1, 1))
+df['Temperature(°C)'] = StandardScaler().fit_transform(df['Temperature(°C)'].values.reshape(-1, 1))
 sample['Temperature(°C)'] = StandardScaler().fit_transform(sample['Temperature(°C)'].values.reshape(-1, 1))
-df1['Humidity(%)'] = StandardScaler().fit_transform(df1['Humidity(%)'].values.reshape(-1, 1))
+df['Humidity(%)'] = StandardScaler().fit_transform(df['Humidity(%)'].values.reshape(-1, 1))
 sample['Humidity(%)'] = StandardScaler().fit_transform(sample['Humidity(%)'].values.reshape(-1, 1))
 
 # Normalizing the required column
-df1['Visibility (10m)'] = MinMaxScaler().fit_transform(df1['Visibility (10m)'].values.reshape(-1, 1))
+df['Visibility (10m)'] = MinMaxScaler().fit_transform(df['Visibility (10m)'].values.reshape(-1, 1))
 sample['Visibility (10m)'] = MinMaxScaler().fit_transform(sample['Visibility (10m)'].values.reshape(-1, 1))
 
 #Split data into X and y
-X=df1.drop('Rented Bike Count', axis=1).values
-y=df1['Rented Bike Count'].values
+X=df.drop('Rented Bike Count', axis=1).values
+y=df['Rented Bike Count'].values
 
 #Standarizing the features
 std=StandardScaler()
