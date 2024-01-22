@@ -16,8 +16,8 @@ st.set_page_config(page_title="Bike Sharing Demand Predictor", page_icon="https:
 st.title("red[Bike Sharing Demand Predictor]")
 
 #resources path
-#FILE_DIR1 = os.path.dirname(os.path.abspath("C://Users//Mrudula Madhavan//Desktop//scifor//Project//pages//Predictor.py"))
-FILE_DIR1 = os.path.dirname(os.path.abspath("Project//pages//Predictor.py"))
+
+FILE_DIR1 = os.path.dirname(os.path.abspath("miniproject//pages//Predictor.py"))
 FILE_DIR = os.path.join(FILE_DIR1,os.pardir)
 dir_of_interest = os.path.join(FILE_DIR, "resources")
 
