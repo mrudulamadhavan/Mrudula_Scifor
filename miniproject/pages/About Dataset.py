@@ -61,7 +61,7 @@ elif (status == 'Summary'):
 elif (status == 'Descriptive Statistics') :    
     x = df.describe(include = "object")
     st.table(x)
-    y = df.describe().T
+    y = df.describe()
     st.table(y)
 else:
     for column in df.columns.tolist():
@@ -72,7 +72,7 @@ else:
 
 def convert_df(df):
     # IMPORTANT: Cache the conversion to prevent computation on every rerun
-    return df.to_csv().encode('utf-8')
+    return df.to_csv().encode('latin')
 
 pub = convert_df(df)
 st.write('-----------------------------------------------------------------------------------')
