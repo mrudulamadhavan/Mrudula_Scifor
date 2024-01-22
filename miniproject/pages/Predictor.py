@@ -148,8 +148,8 @@ df['Humidity(%)'] = StandardScaler().fit_transform(df['Humidity(%)'].values.resh
 sample['Humidity(%)'] = StandardScaler().fit_transform(sample['Humidity(%)'].values.reshape(-1, 1))
 
 # Normalizing the required column
-df['Visibility (10m)'] = MinMaxScaler().fit_transform(df['Visibility (10m)'].values.reshape(-1, 1))
-sample['Visibility (10m)'] = MinMaxScaler().fit_transform(sample['Visibility (10m)'].values.reshape(-1, 1))
+df['Visibility (10m)'] = StandardScaler().fit_transform(df['Visibility (10m)'].values.reshape(-1, 1))
+sample['Visibility (10m)'] = StandardScaler().fit_transform(sample['Visibility (10m)'].values.reshape(-1, 1))
 
 #Split data into X and y
 X=df.drop('Rented Bike Count', axis=1).values
