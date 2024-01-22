@@ -6,11 +6,11 @@ import seaborn as sns
 import plotly.express as px
 import numpy as np
 import os
-from scipy.stats import ttest_ind, ttest_rel, f_oneway
+from scipy.stats import ttest_ind, f_oneway
 
 # absolute path to this file
-# FILE_DIR = os.path.dirname(os.path.abspath("C://Users//Mrudula Madhavan//Desktop//scifor//Project//pages//Data Analysis.py"))
-FILE_DIR = os.path.dirname(os.path.abspath("Project//pages//Data Analysis.py"))
+
+FILE_DIR = os.path.dirname(os.path.abspath("miniproject//pages//Data Analysis.py"))
 # absolute path to this file's root directory
 PARENT_DIR = os.path.join(FILE_DIR, os.pardir)
 # absolute path of directory_of_interest
