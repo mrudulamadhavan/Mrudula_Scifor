@@ -58,7 +58,7 @@ col3,col4 = st.columns(2)
 with col3:  
     weekday = st.selectbox("Weekday", df["Weekday"].unique())
 with col4:  
-    hour = st.selectbox("Part of Day", df["Hour"].unique())
+    hour = st.selectbox("Hour of the day", df["Hour"].unique())
 
 left_column, middle_column, right_column = st.columns(3)
 with left_column:
@@ -99,8 +99,8 @@ def replace_season(season):
         return 3.0
     else:
         return 4.0
-df1['Seasons'] = df1['Seasons'].apply(replace_season)
-sample['Seasons'] = sample['Seasons'].apply(replace_season)
+df1['Seasons'] = df1['Seasons'].apply(replace_season).astype('float64')
+sample['Seasons'] = sample['Seasons'].apply(replace_season).astype('float64')
 
 def replace_weekday(weekday):
     if weekday =='Sunday':
