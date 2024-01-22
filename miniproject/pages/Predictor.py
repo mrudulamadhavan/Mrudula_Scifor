@@ -33,8 +33,8 @@ df=pd.read_csv(DATA_PATH1,encoding='latin')
 df1 = df.copy
 
 # df['Date'] = pd.to_datetime(df['Date'], format="%d/%m/%Y")
-df['Month'] = df['Date'].dt.month.astype('category')
-df['Weekday'] = df['Date'].dt.day_name().astype('category')
+# df['Month'] = df['Date'].dt.month.astype('category')
+# df['Weekday'] = df['Date'].dt.day_name().astype('category')
 
 
 def prediction(season,month,weekday,hour,temperature,humidity,visibility,windspeed,solarrdn,rainfall,snowfall):
