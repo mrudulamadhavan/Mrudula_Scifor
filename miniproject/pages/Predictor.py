@@ -32,9 +32,9 @@ DATA_PATH1=os.path.join(DATA_PATH, "BikeData.csv")
 df=pd.read_csv(DATA_PATH1,encoding='latin')
 df1 = df.copy
 
-df1['Date'] = pd.to_datetime(df1['Date'], format="%d/%m/%Y")
-df1['Month'] = df1['Date'].dt.month.astype('category')
-df1['Weekday'] = df1['Date'].dt.day_name().astype('category')
+df['Date'] = pd.to_datetime(df1['Date'], format="%d/%m/%Y")
+df['Month'] = df['Date'].dt.month.astype('category')
+df['Weekday'] = df['Date'].dt.day_name().astype('category')
 
 
 def prediction(season,month,weekday,hour,temperature,humidity,visibility,windspeed,solarrdn,rainfall,snowfall):
@@ -99,7 +99,7 @@ def replace_season(season):
         return 3.0
     else:
         return 4.0
-df1['Seasons'] = df1['Seasons'].apply(replace_season)
+df['Seasons'] = df['Seasons'].apply(replace_season)
 sample['Seasons'] = sample['Seasons'].apply(replace_season)
 
 def replace_weekday(weekday):
