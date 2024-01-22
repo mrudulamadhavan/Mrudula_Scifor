@@ -13,7 +13,7 @@ st.set_page_config(page_title="Bike Sharing Demand Predictor", page_icon="https:
                    layout="wide")
 
 #import model
-st.title("red[Bike Sharing Demand Predictor]")
+st.title(":red[Bike Sharing Demand Predictor]")
 
 #resources path
 
@@ -28,11 +28,11 @@ st.image(img)
 DATA_PATH = os.path.join(dir_of_interest, "data")
 
 #Load data
-DATA_PATH1=os.path.join(DATA_PATH, "bike_dataset.csv")
-df=pd.read_csv(DATA_PATH1)
+DATA_PATH1=os.path.join(DATA_PATH, "BikeData.csv")
+df=pd.read_csv(DATA_PATH1,encoding='latin')
 df1 = df.copy
 
-xgb = pickle.load(open('miniproject/xgb_model.pkl','rb'))
+
 
 
 def prediction(season,month,weekday,hour,temperature,humidity,visibility,windspeed,solarrdn,rainfall,snowfall):
@@ -160,6 +160,8 @@ X=std_fit.transform(X)
 
 # Splitting data into 75:25 ratio
 X_train, X_test, y_train, y_test = train_test_split(X,y,test_size = 0.25, random_state = 0)
+
+xgb = pickle.load(open('miniproject/xgb_model.pkl','rb'))
 
 #Train the model
 xgb=XGBRegressor(learning_rate=0.15, n_estimators=50, max_leaves=0, random_state=42)
