@@ -1,8 +1,0 @@
-# sklearn
-streamlit
-numpy
-matplotlib
-pandas
-scikit-learn
-plotly
-xgboost
