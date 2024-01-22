@@ -6,3 +6,4 @@ pandas
 scikit-learn
 plotly
 xgboost
+seaborn
