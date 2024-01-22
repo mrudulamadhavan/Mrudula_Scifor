@@ -28,13 +28,13 @@ st.image(img)
 DATA_PATH = os.path.join(dir_of_interest, "data")
 
 #Load data
-DATA_PATH1=os.path.join(DATA_PATH, "bike_dataset.csv")
+DATA_PATH1=os.path.join(DATA_PATH, "BikeData.csv")
 df=pd.read_csv(DATA_PATH1,encoding='latin')
 df1 = df.copy
 
-# df['Date'] = pd.to_datetime(df['Date'], format="%d/%m/%Y")
-# df['Month'] = df['Date'].dt.month.astype('category')
-# df['Weekday'] = df['Date'].dt.day_name().astype('category')
+df['Date'] = pd.to_datetime(df['Date'], format="%d/%m/%Y")
+df['Month'] = df['Date'].dt.month.astype('category')
+df['Weekday'] = df['Date'].dt.day_name().astype('category')
 
 
 def prediction(season,month,weekday,hour,temperature,humidity,visibility,windspeed,solarrdn,rainfall,snowfall):
@@ -99,8 +99,8 @@ def replace_season(season):
         return 3.0
     else:
         return 4.0
-df1['Seasons'] = df1['Seasons'].apply(replace_season).astype('float64')
-sample['Seasons'] = sample['Seasons'].apply(replace_season).astype('float64')
+df1['Seasons'] = df1['Seasons'].apply(replace_season)
+sample['Seasons'] = sample['Seasons'].apply(replace_season)
 
 def replace_weekday(weekday):
     if weekday =='Sunday':
