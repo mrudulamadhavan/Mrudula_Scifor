@@ -5,7 +5,7 @@ import plotly.express as px
 import os
 
 # absolute path to this file
-FILE_DIR = os.path.dirname(os.path.abspath("miniproject//pages//Data Description.py"))
+FILE_DIR = os.path.dirname(os.path.abspath("miniproject//pages//About Dataset.py"))
 
 # absolute path to this file's root directory
 PARENT_DIR = os.path.join(FILE_DIR, os.pardir)
