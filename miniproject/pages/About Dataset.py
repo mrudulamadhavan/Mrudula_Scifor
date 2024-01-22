@@ -36,7 +36,7 @@ st.image(img)
 st.subheader( 'Target Column : :red[Rented Bike Count]')
 
 DATA_PATH = os.path.join(dir_of_interest, "data", "BikeData.csv")
-df = pd.read_csv(DATA_PATH)
+df = pd.read_csv(DATA_PATH,encoding="latin")
 df = df[['Date', 'Hour', 'Temperature(°C)', 'Humidity(%)','Wind speed (m/s)', 'Visibility (10m)',
             'Dew point temperature(°C)','Solar Radiation (MJ/m2)', 'Rainfall(mm)', 'Snowfall (cm)', 
             'Seasons','Holiday', 'Functioning Day','Rented Bike Count']]
