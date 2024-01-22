@@ -85,7 +85,7 @@ bike_count = ''
 
 #Create dataframe using all these values
 sample=pd.DataFrame({"Seasons":[season],"Month":[month],"Weekday":[weekday],"Hour":[hour],
-                    "Temperature(°C)":float(temperature),"Humidity(%)":float(humidity),"Visibility(10m)":float(visibility),
+                    "Temperature(°C)":float(temperature),"Humidity(%)":float(humidity),"Visibility (10m)":float(visibility),
                     "Wind speed (m/s)":[windspeed],"Solar Radiation (MJ/m2)":[solarrdn],
                     "Rainfall(mm)":[rainfall], "Snowfall (cm)":[snowfall]})
 
