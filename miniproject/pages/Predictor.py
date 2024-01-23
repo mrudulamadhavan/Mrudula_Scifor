@@ -149,6 +149,9 @@ sample['Humidity(%)'] = StandardScaler().fit_transform(sample['Humidity(%)'].val
 df['Visibility (10m)'] = StandardScaler().fit_transform(df['Visibility (10m)'].values.reshape(-1, 1))
 sample['Visibility (10m)'] = StandardScaler().fit_transform(sample['Visibility (10m)'].values.reshape(-1, 1))
 
+
+df=df.dropna()
+
 #Split data into X and y
 X=df.drop('Rented Bike Count', axis=1).values
 y=df['Rented Bike Count'].values
