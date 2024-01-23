@@ -30,7 +30,7 @@ DATA_PATH = os.path.join(dir_of_interest, "data")
 #Load data
 DATA_PATH1=os.path.join(DATA_PATH, "BikeData.csv")
 df=pd.read_csv(DATA_PATH1,encoding='latin')
-df1 = df.copy
+df1 = df.copy()
 
 df['Date'] = pd.to_datetime(df['Date'], format="%d/%m/%Y")
 df['Month'] = df['Date'].dt.month.astype('category')
@@ -79,7 +79,7 @@ with col3:
 with col4:
     snowfall = st.number_input("Snowfall (cm) ")
 
-bike_count = ''
+bike_count = 0
 #---------------------------------------------------------------------------------------------------------------
 #Create dataframe using all these values
 sample=pd.DataFrame({"Seasons":[season],"Month":[month],"Weekday":[weekday],"Hour":[hour],
@@ -164,8 +164,8 @@ X_train, X_test, y_train, y_test = train_test_split(X,y,test_size = 0.25, random
 xgb = pickle.load(open('miniproject/xgb_model.pkl','rb'))
 
 #Train the model
-xgb=XGBRegressor(learning_rate=0.15, n_estimators=50, max_leaves=0, random_state=42)
-xgb.fit(X,y)
+#xgb=XGBRegressor(learning_rate=0.15, n_estimators=50, max_leaves=0, random_state=42)
+#xgb.fit(X,y)
 
 #Standardize the features
 sample=sample.values
@@ -173,8 +173,7 @@ sample=std_fit.transform(sample)
 
 #Prediction
 if st.button('Predict Demand'):
-    price=xgb.predict(sample)
-    bike_cnt=bike_count[0].round(2)    
-    st.subheader(":blue[The Predicted Value for Bike Rentals :] :green[{}]".format("$ "+str(bike_cnt)))
+    bike_count = prediction(season, month, weekday, hour, temperature, humidity, visibility, windspeed, solarrdn, rainfall, snowfall)   
+    st.subheader(":blue[The Predicted Value for Bike Rentals :] :green[{}]".format("$ " + str(bike_count[0].round(2))))
 else:
     pass
