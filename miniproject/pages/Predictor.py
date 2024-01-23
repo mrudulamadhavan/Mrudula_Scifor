@@ -141,17 +141,22 @@ sample['Weekday'] = sample['Weekday'].apply(replace_weekday).astype('float64')
 
 # Function to distribute hour
 def distribute_hour(hour):
-    if hour == 'Evening':
-        return 4.0  # 
-    elif hour == 'Morning':
-        return  2.0 # 
-    elif hour == 'Afternoon':
-        return  3.0 #
+    if hour == '12 AM - 3 AM':
+        return 0.0  # 
+    elif hour == '4 AM - 7 AM':
+        return 1.0 # 
+    elif hour == '8 AM - 11 AM':
+        return 2.0 #
+    elif hour == '12 PM - 3 PM':
+        return 3.0
+    elif hour == '4 PM - 7 PM':
+        return 4.0
+    elif hour == '8 PM - 12 AM':
+        return 5.0
     else:
-        return 1.0  #'Night'
+        pass
 
-#hour_map = {'Night': 1.0,"Morning":2.0,"Afternoon":3.0, "Evening":4.0}
-# Apply the hour function
+
 df['Hour'] = df['Hour'].apply(distribute_hour).astype('float64')
 sample['Hour'] = sample['Hour'].apply(distribute_hour).astype('float64')
 
