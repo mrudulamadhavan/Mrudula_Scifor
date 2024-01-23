@@ -45,7 +45,7 @@ col1,col2 = st.columns(2)
 with col1:  
     season = st.selectbox("Season", df["Seasons"].unique())
 with col2:  
-    month = st.selectbox("Month", df["Month"].unique())
+    month = st.selectbox("Month", ['January', 'February', 'March', 'April', ..., 'July', 'August', 'September', 'October', 'November','December'])
 
 
 col3,col4 = st.columns(2)
