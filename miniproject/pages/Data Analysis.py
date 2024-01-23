@@ -94,43 +94,8 @@ for i, feature in enumerate(numeric_features):
 # Adjust layout and display the plots in Streamlit app
 plt.tight_layout()
 st.pyplot(fig)
-st.write('')
-# Function to distribute hour
-def distribute_hour(h):
-    if 17 <= h <= 22:
-        return 'Evening'
-    elif 7 <= h <= 10:
-        return 'Morning'
-    elif 11 <= h <= 16:
-        return 'Noon'
-    else:
-        return 'Night'
-
-# Apply the hour function
-df['Hour'] = df['Hour'].apply(distribute_hour)
-
-target_variable = 'Rented Bike Count'
-
-hourtype = st.selectbox("Select the Parts of Day:", df['Hour'].unique())
-col1, col2 = st.columns(2)
-fig_1 = px.bar(df,x='Hour',y=target_variable , title='Distribution of Bike Rentals Demand in various Parts of Day')
-fig_1.update_layout(bargap=0.2)
-col1.plotly_chart(fig_1, use_container_width=True)
-fig_2 = px.box(df[df['Hour'] == hourtype], y=target_variable)
-col2.plotly_chart(fig_2, use_container_width=True)        
-st.write("-------------------------------------------------------------------------------------------")   
-
-# Display the correlation heatmap using Seaborn
-corr = df.corr()
-mask = np.array(corr)
-mask[np.tril_indices_from(mask)] = False
-f, ax = plt.subplots(figsize=(20, 6))
-heatmap = sns.heatmap(corr, annot = True, fmt='.3f',mask=mask, cmap='mako',cbar=True )
-heatmap.set_title('Correlation Heatmap', pad=15)
-st.pyplot(f)
-st.write('')
-    
-st.subheader('Hypothesis Testing Results')
+st.write('-----------------------------------------')   
+st.header('Hypothesis Testing Results')
 st.write('Hypothesis testing is a statistical method used to make inferences or draw conclusions about a population based on a sample of data. The process involves formulating a hypothesis about the population parameter, collecting and analyzing data, and then using statistical tests to determine whether there is enough evidence to reject the null hypothesis in favor of an alternative hypothesis.')
 st.write('Based on the exploratory analysis conducted using charts, we formulated three hypothetical statements about the dataset and subsequently conducted hypothesis testing through code and statistical methods to draw conclusive results regarding these statements.')
 status = st.radio("Choose any Hypothetical Statements : ", ('1: Rented Bike Demand in hot weather is higher compared to demand in cold weather.','2. Rented Bike Demand during rush hour (7-9 AM & 5-7 PM) and non-rush hour are different.','3. Rented Bike Demand is different in different seasons with highest in summer and lowest in winter.'))
