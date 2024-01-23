@@ -56,13 +56,12 @@ st.write("----------------------------------------------------------------------
 # Line plot for Average Rented Bike Count by Hour for each Season using Seaborn
 st.subheader('Rented Bike Count Trend by Hour for Each Season:')
 plt.figure(figsize=(12, 6))
-fig = sns.lineplot(x="Hour", y="Rented Bike Count", hue="Seasons", data=df)
+sns.lineplot(x="Hour", y="Rented Bike Count", hue="Seasons", data=df)
 plt.ylabel("Avg Rented Bike Count")
 plt.title("Rented Bike Count Trend by Hour for Each Season")
 # Display the plot in the Streamlit app
-st.pyplot(fig)
-st.write('The demand is higher during rush hour (i.e., 7-9AM and 5-7PM) when people go to offices/schools and come back in evening.The Rentals Bike demand trend pattern is same for all the seasons only levels are different. Demand level in winter is lowest and highest in Summer')
-
+st.pyplot()
+st.write('The demand is higher during rush hour (i.e., 7-9AM and 5-7PM) when people go to offices/schools and come back in the evening. The Rentals Bike demand trend pattern is the same for all the seasons, only levels are different. Demand level in winter is the lowest and highest in Summer')
 st.write("--------------------------------------------------------------------------------")
 # Line plot for Average Rented Bike Count by Hour for each weekday using Seaborn
 st.subheader('Rented Bike Count Trend by Hour for Weekdays :')
@@ -71,7 +70,7 @@ fig = sns.lineplot(x="Hour", y="Rented Bike Count", hue="weekday", data=df)
 plt.ylabel("Avg Rented Bike Count")
 plt.title("Rented Bike Count Trend by Hour for Weekdays")
 # Display the plot in the Streamlit app
-st.pyplot(fig)
+st.pyplot()
 st.write('The bike rental pattern of weekdays and weekends is different.In the weekend the demand becomes high in the afternoon and the demand for office timings is high during weekdays.')
 st.write("------------------------------------------------------------------------------------")
 
