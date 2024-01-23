@@ -7,3 +7,4 @@ scikit-learn
 plotly
 xgboost
 seaborn
+Python 3.9
