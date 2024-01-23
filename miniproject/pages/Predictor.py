@@ -40,7 +40,7 @@ def prediction(season,month,weekday,hour,holiday,temperature,humidity,visibility
     return prediction
 
 # ------------------------------------------------------------------------------------------------------------
-st.subheader("Enter the Location details :")
+st.subheader("Enter the details :")
 
 col1,col2,col3 = st.columns(3)
 with col1:  
@@ -52,7 +52,7 @@ with col3:
 
 col4,col5 = st.columns(2)
 with col4:  
-    hour = st.selectbox("Part of day", df["Hour"].unique())
+    hour = st.selectbox("Time Shift", df["Hour"].unique())
 with col5:  
   holiday = st.selectbox("Holiday", df["Holiday"].unique())
 
