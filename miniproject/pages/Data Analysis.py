@@ -8,6 +8,7 @@ import plotly.express as px
 import numpy as np
 import os
 from scipy.stats import ttest_ind, f_oneway
+st.set_option('deprecation.showPyplotGlobalUse', False)
 
 # absolute path to this file
 
