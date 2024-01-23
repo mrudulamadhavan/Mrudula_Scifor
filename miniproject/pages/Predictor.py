@@ -188,7 +188,9 @@ X=std_fit.transform(X)
 # Splitting data into 75:25 ratio
 X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.25, random_state=0)
 
-xgb = pickle.load(open('miniproject/xgb_model.pkl','rb'))
+#Train the model
+xgb=XGBRegressor(learning_rate=0.15, n_estimators=50, max_leaves=0, random_state=42)
+xgb.fit(X,y)
 
 
 #Standardize the features
