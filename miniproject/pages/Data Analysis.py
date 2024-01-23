@@ -110,11 +110,11 @@ if "1: Rented Bike Demand in hot weather is higher compared to demand in cold we
     cold_temps = df[df['Temperature(°C)'] < 20]['Rented Bike Count']
     st.write(':red[Null Hypothesis]: Rented Bike Demand in hot weather is higher compared to demand in cold weather.')
     st.write(':red[Alternate Hypothesis]: No significant difference in demand for Bike rentals in hot weather compared to demand in cold weather.')
-    st.text("Two-sample T-test")
+    st.text("Test Type : Two-sample T-test")
     st.text('alpha = 0.05')
     t_stat, p_val = ttest_ind(hot_temps, cold_temps, equal_var=False)
-    st.text('Test Statistic:', t_stat)
-    st.text('p-value:', p_val)
+    st.write('Test Statistic:', t_stat)
+    st.write('p-value:', p_val)
     if p_val < 0.05:
         st.text("Since p-value is less than 0.05, we reject the null hypothesis.")
         st.text("i.e., Rented Bike Demand in hot weather is higher compared to demand in cold weather.")
