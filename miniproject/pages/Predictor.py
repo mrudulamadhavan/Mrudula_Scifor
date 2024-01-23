@@ -42,18 +42,19 @@ def prediction(season,month,weekday,hour,temperature,humidity,visibility,windspe
 # ------------------------------------------------------------------------------------------------------------
 st.subheader("Enter the Location details :")
 
-col1,col2 = st.columns(2)
+col1,col2,col3 = st.columns(3)
 with col1:  
     season = st.selectbox("Season", df["Seasons"].unique())
 with col2:  
     month = st.selectbox("Month", ['January', 'February', 'March', 'April', ..., 'July', 'August', 'September', 'October', 'November','December'])
-
-
-col3,col4 = st.columns(2)
 with col3:  
     weekday = st.selectbox("Weekday", ['Sunday', 'Monday', 'Tuesday', 'Wednesday','Thursday','Friday', 'Saturday'])
+
+col4,col5 = st.columns(2)
 with col4:  
-    hour = st.selectbox("Hour of the day", df["Hour"].unique())
+    hour = st.selectbox("Part of day", df["Hour"].unique())
+with col5:  
+  holiday = st.selectbox("Holiday", df["Holiday"].unique())
 
 left_column, middle_column, right_column = st.columns(3)
 with left_column:
@@ -69,20 +70,13 @@ with col1:
 with col2:
     solarrdn = st.number_input("Solar Radiation (MJ/m2) ")
 
-
-col3,col4 = st.columns(2)
-with col3:  
-    rainfall = st.number_input("Rainfall(mm) ")
-with col4:
-    snowfall = st.number_input("Snowfall (cm) ")
-
 bike_count = 0
+
 #---------------------------------------------------------------------------------------------------------------
 #Create dataframe using all these values
-sample=pd.DataFrame({"Seasons":[season],"Month":[month],"Weekday":[weekday],"Hour":[hour],
+sample=pd.DataFrame({"Seasons":[season],"Month":[month],"Weekday":[weekday],"Hour":[hour],"Holiday":["holiday"],
                     "Temperature(°C)":float(temperature),"Humidity(%)":float(humidity),"Visibility (10m)":float(visibility),
-                    "Wind speed (m/s)":[windspeed],"Solar Radiation (MJ/m2)":[solarrdn],
-                    "Rainfall(mm)":[rainfall], "Snowfall (cm)":[snowfall]})
+                    "Wind speed (m/s)":[windspeed],"Solar Radiation (MJ/m2)":[solarrdn]})
 
 #Function to change season to number
 def replace_season(season):    
