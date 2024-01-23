@@ -196,8 +196,10 @@ sample=sample.values
 sample=std_fit.transform(sample)
 st.write("")
 #Prediction
-if st.button('Predict Demand'):
-    bike_count = prediction(season, month, weekday, hour,holiday, temperature, humidity, visibility, windspeed, solarrdn)   
-    st.subheader(":blue[The Predicted Value for Bike Rentals :] :green[{}]".format("$ " + str(bike_count[0].round(2))))
+if st.button('Predict Demand',key = "<uniquevalueofsomesort>"):
+    bike_count=xgb.predict(sample)
+    bike_count=bike_count[0].round(2)    
+    st.subheader(":blue[The Predicted Value for Bike Rentals :] :green[{}]".format(str(bike_count)))
 else:
     pass
+    
