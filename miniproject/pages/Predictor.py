@@ -32,6 +32,8 @@ DATA_PATH1=os.path.join(DATA_PATH, "bike_demand_cleaned.csv")
 df=pd.read_csv(DATA_PATH1,encoding='latin')
 df1 = df.copy()
 
+# ['Temperature(°C)', 'Humidity(%)', 'Wind speed (m/s)','Solar Radiation (MJ/m2)', 'Visibility (10m)', 'Month', 'Weekday',
+       'Hour', 'Holiday', 'Seasons', 'Rented Bike Count']
 
 def prediction(season,month,weekday,hour,temperature,humidity,visibility,windspeed,solarrdn,rainfall,snowfall):
     prediction = xgb.predict([[season,month,weekday,hour,temperature,humidity,visibility,windspeed,solarrdn,rainfall,snowfall]])
@@ -50,7 +52,7 @@ with col2:
 
 col3,col4 = st.columns(2)
 with col3:  
-    weekday = st.selectbox("Weekday", df["Weekday"].unique())
+    weekday = st.selectbox("Weekday", ['Sunday', 'Monday', 'Tuesday', 'Wednesday','Thursday','Friday', 'Saturday'])
 with col4:  
     hour = st.selectbox("Hour of the day", df["Hour"].unique())
 
