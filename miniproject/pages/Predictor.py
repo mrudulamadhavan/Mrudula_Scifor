@@ -197,7 +197,7 @@ sample=std_fit.transform(sample)
 
 #Prediction
 if st.button('Predict Demand'):
-    bike_count = prediction(season, month, weekday, hour, temperature, humidity, visibility, windspeed, solarrdn, rainfall, snowfall)   
+    bike_count = prediction(season, month, weekday, hour,holiday, temperature, humidity, visibility, windspeed, solarrdn)   
     st.subheader(":blue[The Predicted Value for Bike Rentals :] :green[{}]".format("$ " + str(bike_count[0].round(2))))
 else:
     pass
