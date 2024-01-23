@@ -2,8 +2,8 @@ import streamlit as st
 from matplotlib import image
 import matplotlib.pyplot as plt
 import pandas as pd
-import pip
-pip.main(['install', 'seaborn'])
+# import pip
+# pip.main(['install', 'seaborn'])
 import seaborn as sns
 import plotly.express as px
 import numpy as np
