@@ -10,7 +10,7 @@ from sklearn.model_selection import train_test_split
 from matplotlib import image
 
 st.set_page_config(page_title="Bike Sharing Demand Predictor", page_icon="https://www.shutterstock.com/image-vector/bicycle-filled-outline-icons-vector-illustration-1772580485",
-                   layout="wide")
+                   layout="centered")
 
 #import model
 st.title(":red[  Bike Sharing Demand Predictor  ]")
