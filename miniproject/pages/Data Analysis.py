@@ -75,11 +75,11 @@ st.pyplot()
 st.write('The bike rental pattern of weekdays and weekends is different.In the weekend the demand becomes high in the afternoon and the demand for office timings is high during weekdays.')
 st.write("------------------------------------------------------------------------------------")
 # Streamlit app
-st.title("Regression Plots for Independent Variables")
+st.subheader("Regression Plots for Independent Variables")
 
 # Set up subplots
 fig, axes = plt.subplots(nrows=2, ncols=4, figsize=(15, 8))
-fig.suptitle('Regression Plots: Rented Bike Count vs Independent Variables')
+fig.suptitle('Regression Plots: Rented Bike Count vs Independent Variables',fontsize=18)
 
 # Flatten the axes for easy iteration
 axes = axes.flatten()
