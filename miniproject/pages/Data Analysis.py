@@ -106,6 +106,7 @@ status = st.radio("Choose any Hypothetical Statements:", ('1: Rented Bike Demand
                                                           '3. Rented Bike Demand is different in different seasons with highest in summer and lowest in winter.'))
 
 if "1: Rented Bike Demand in hot weather is higher compared to demand in cold weather." in status:
+    st.write("-------")
     hot_temps = df[df['Temperature(°C)'] >= 20]['Rented Bike Count']
     cold_temps = df[df['Temperature(°C)'] < 20]['Rented Bike Count']
     st.write(':red[Null Hypothesis]: Rented Bike Demand in hot weather is higher compared to demand in cold weather.')
@@ -124,6 +125,7 @@ if "1: Rented Bike Demand in hot weather is higher compared to demand in cold we
         st.write("i.e., There is no significant difference in demand for bike rentals in hot weather compared to demand in cold weather.")
 
 elif "2. Rented Bike Demand during rush hour (7-9 AM & 5-7 PM) and non-rush hour are different." in status:
+    st.write("-------")
     rush_hour = df[(df['Hour'] >= 7) & (df['Hour'] <= 9) | (df['Hour'] >= 17) & (df['Hour'] <= 19)]['Rented Bike Count']
     non_rush_hour = df[~((df['Hour'] >= 7) & (df['Hour'] <= 9) | (df['Hour'] >= 17) & (df['Hour'] <= 19))]['Rented Bike Count']
     st.write(':red[Null Hypothesis]: Rented Bike Demand during rush hour (7-9 AM & 5-7 PM) and non-rush hour are different.')
@@ -142,6 +144,7 @@ elif "2. Rented Bike Demand during rush hour (7-9 AM & 5-7 PM) and non-rush hour
         st.write("i.e., There is no significant difference in demand for bike rentals during rush hour compared to non-rush hour.")
 
 else:
+    st.write("-------")
     st.write(':red[Null Hypothesis]: Rented Bike Demand is different in different seasons with highest in summer and lowest in winter.')
     st.write(':red[Alternate Hypothesis]: No significant difference in demand for bike rentals in different seasons with highest in summer and lowest in winter.')
     st.text("Test Type : One-way ANOVA Test")
@@ -151,7 +154,7 @@ else:
                                 df.loc[df['Seasons'] == 'Autumn', 'Rented Bike Count'],
                                 df.loc[df['Seasons'] == 'Winter', 'Rented Bike Count'])
     st.write('Test Statistic:', f_stat)
-    st.write('p-value:', p_val)
+    st.write('p-value:', p_value)
     st.write("-----")
     if p_value < 0.05:
         st.write("Since p-value is less than 0.05, we reject the null hypothesis.")
