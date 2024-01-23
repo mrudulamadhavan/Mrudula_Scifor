@@ -55,7 +55,7 @@ fig1 = px.bar(df, x='Hour', y='Rented Bike Count', color='Hour',title='Rented Bi
 st.plotly_chart(fig1, use_container_width=True)
 st.write("-----------------------------------------------------------------------------------")
 # Line plot for Average Rented Bike Count by Hour for each Season using Seaborn
-st.subheader('Rented Bike Count Trend by Hour for Each Season:')
+st.subheader('     Rented Bike Count Trend by Hour for Each Season')
 plt.figure(figsize=(12, 6))
 sns.lineplot(x="Hour", y="Rented Bike Count", hue="Seasons", data=df)
 plt.ylabel("Avg Rented Bike Count")
@@ -65,7 +65,7 @@ st.pyplot()
 st.write('The demand is higher during rush hour (i.e., 7-9AM and 5-7PM) when people go to offices/schools and come back in the evening. The Rentals Bike demand trend pattern is the same for all the seasons, only levels are different. Demand level in winter is the lowest and highest in Summer')
 st.write("--------------------------------------------------------------------------------")
 # Line plot for Average Rented Bike Count by Hour for each weekday using Seaborn
-st.subheader('Rented Bike Count Trend by Hour for Weekdays :')
+st.subheader('      Rented Bike Count Trend by Hour for Weekdays ')
 plt.figure(figsize=(12, 6))
 fig = sns.lineplot(x="Hour", y="Rented Bike Count", hue="weekday", data=df)
 plt.ylabel("Avg Rented Bike Count")
