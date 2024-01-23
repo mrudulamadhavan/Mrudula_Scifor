@@ -26,7 +26,7 @@ df['Date'] = pd.to_datetime(df['Date'], format="%d/%m/%Y")
 df['Year'] = df['Date'].dt.year
 df['Month'] = df['Date'].dt.month
 df['Day'] = df['Date'].dt.day
-df['weekday'] = df['Date'].dt.day_name()
+df['Weekday'] = df['Date'].dt.day_name()
 
 # Convert new columns to categorical
 for col in ['Year', 'Month', 'Day']:
@@ -43,12 +43,12 @@ fig_2 = px.box(df, x='Rented Bike Count', title="Box Plot for Rented Bike Count"
 col2.plotly_chart(fig_2, use_container_width=True)
 st.write('Rented Bike Count is right skewed. It means that most of the data falls on the lower end of the scale, and there are relatively fewer instances where a large number of bikes were rented.')
 st.write('--------------------------------------------------------------------------------------')
-feature=st.selectbox(
-    "Choose any feature to see the relationship with Rented Bike Count",(df.columns))
-
-fig = px.box(df, x=feature, y='Rented Bike Count', color=feature)
+feature=st.selectbox("Choose any feature to see the relationship with Rented Bike Count",(['Seasons','Month','Weekday','Hour'))
+fig = px.bar(df, x=feature, y='Rented Bike Count', color=feature)
 st.plotly_chart(fig) # , use_container_width=True
 st.write('---')
+
+
 seasontype = st.selectbox("Select the Season:", df['Seasons'].unique())
 col1, col2 = st.columns(2)
 fig_1 = px.bar(df,x='Seasons',y="Rented Bike Count" , title='Rented Bike Count by Seasons')
