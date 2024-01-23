@@ -96,7 +96,7 @@ plt.tight_layout()
 st.pyplot(fig)
 st.write('-----------------------------------------')   
 
-st.header('Hypothesis Testing Results')
+st.title(":blue[Hypothesis Testing Results])
 st.write('Hypothesis testing is a statistical method used to make inferences or draw conclusions about a population based on a sample of data. The process involves formulating a hypothesis about the population parameter, collecting and analyzing data, and then using statistical tests to determine whether there is enough evidence to reject the null hypothesis in favor of an alternative hypothesis.')
 st.write('Based on the exploratory analysis conducted using charts, we formulated three hypothetical statements about the dataset and subsequently conducted hypothesis testing through code and statistical methods to draw conclusive results regarding these statements.')
 
