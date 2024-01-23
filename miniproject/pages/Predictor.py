@@ -166,19 +166,14 @@ sample['Holiday'] = sample['Holiday'].apply(replace_holiday)
 df['Wind speed (m/s)'] = np.sqrt(df['Wind speed (m/s)'])
 sample['Wind speed (m/s)'] = np.sqrt(sample['Wind speed (m/s)'])
 # Standardizing the required column
-df['Temperature(°C)'] = StandardScaler().fit_transform(df['Temperature(°C)'].values.reshape(-1, 1))
-sample['Temperature(°C)'] = StandardScaler().fit_transform(sample['Temperature(°C)'].values.reshape(-1, 1))
-df['Humidity(%)'] = StandardScaler().fit_transform(df['Humidity(%)'].values.reshape(-1, 1))
-sample['Humidity(%)'] = StandardScaler().fit_transform(sample['Humidity(%)'].values.reshape(-1, 1))
+#df['Temperature(°C)'] = StandardScaler().fit_transform(df['Temperature(°C)'].values.reshape(-1, 1))
+#sample['Temperature(°C)'] = sample['Temperature(°C)'].values.reshape(-1, 1))
+#df['Humidity(%)'] = StandardScaler().fit_transform(df['Humidity(%)'].values.reshape(-1, 1))
+#sample['Humidity(%)'] = StandardScaler().fit_transform(sample['Humidity(%)'].values.reshape(-1, 1))
 
 # Normalizing the required column
-df['Visibility (10m)'] = StandardScaler().fit_transform(df['Visibility (10m)'].values.reshape(-1, 1))
-sample['Visibility (10m)'] = StandardScaler().fit_transform(sample['Visibility (10m)'].values.reshape(-1, 1))
-
-# Drop non-numeric columns
-numeric_columns = df.select_dtypes(include=['number']).columns
-df = df[numeric_columns].copy()  # Create a copy to avoid modifying the original DataFrame
-
+#df['Visibility (10m)'] = StandardScaler().fit_transform(df['Visibility (10m)'].values.reshape(-1, 1))
+#sample['Visibility (10m)'] = StandardScaler().fit_transform(sample['Visibility (10m)'].values.reshape(-1, 1))
 
 
 #Split data into X and y
