@@ -129,10 +129,10 @@ def distribute_hour(hour):
     else:
         return 1.0  #'Night'
 
-hour_map = {'Night': 1.0,"Morning":2.0,"Afternoon":3.0, "Evening":4.0}
+#hour_map = {'Night': 1.0,"Morning":2.0,"Afternoon":3.0, "Evening":4.0}
 # Apply the hour function
-df['Hour'] = df['Hour'].apply(distribute_hour).map(hour_map).astype('float64')
-sample['Hour'] = sample['Hour'].apply(distribute_hour).map(hour_map).astype('float64')
+df['Hour'] = df['Hour'].apply(distribute_hour).astype('float64')
+sample['Hour'] = sample['Hour'].apply(distribute_hour).astype('float64')
 
 df['Month'] = df['Month'].astype('float64')
 sample['Month'] = sample['Month'].astype('float64')
