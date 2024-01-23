@@ -43,13 +43,16 @@ fig_2 = px.box(df, x='Rented Bike Count', title="Box Plot for Rented Bike Count"
 col2.plotly_chart(fig_2, use_container_width=True)
 st.write('Rented Bike Count is right skewed. It means that most of the data falls on the lower end of the scale, and there are relatively fewer instances where a large number of bikes were rented.')
 st.write('--------------------------------------------------------------------------------------')
-feature = st.selectbox("Choose any feature to see the relationship with Rented Bike Count", ['Seasons', 'Month', 'Weekday', 'Hour'])
+feature = st.selectbox("Choose any feature to see the relationship with Rented Bike Count", ['Seasons', 'Month', 'Weekday'])
 col1, col2 = st.columns(2)
 fig1 = px.bar(df, x=feature, y='Rented Bike Count', color=feature)
 col1.plotly_chart(fig1, use_container_width=True)
 fig2 = px.box(df, y=feature, x='Rented Bike Count', color=feature)
 col2.plotly_chart(fig2, use_container_width=True)
 st.write('---')
+
+fig1 = px.bar(df, x='Hour', y='Rented Bike Count', color='Hour')
+col1.plotly_chart(fig1, use_container_width=True)
 
 
 seasontype = st.selectbox("Select the Season:", df['Seasons'].unique())
