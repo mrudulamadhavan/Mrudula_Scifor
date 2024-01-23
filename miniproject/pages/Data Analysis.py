@@ -3,10 +3,6 @@ from matplotlib import image
 import matplotlib.pyplot as plt
 import pandas as pd
 import pip
-import subprocess
-
-# Install seaborn using pip
-subprocess.run(["pip", "install", "seaborn"])
 import seaborn as sns
 import plotly.express as px
 import numpy as np
