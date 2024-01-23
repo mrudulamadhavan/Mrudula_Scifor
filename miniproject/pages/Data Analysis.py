@@ -107,8 +107,8 @@ st.write('Based on the exploratory analysis conducted using charts, we formulate
 
 # User selects a hypothetical statement
 status = st.radio("Choose any Hypothetical Statements:", ('1: Rented Bike Demand in hot weather is higher compared to demand in cold weather.',
-                                                          '2. Rented Bike Demand during rush hour (7-9 AM & 5-7 PM) and non-rush hour are different.',
-                                                          '3. Rented Bike Demand is different in different seasons with highest in summer and lowest in winter.'))
+                                                          '2: Rented Bike Demand during rush hour (7-9 AM & 5-7 PM) and non-rush hour are different.',
+                                                          '3: Rented Bike Demand is different in different seasons with highest in summer and lowest in winter.'))
 
 if "1: Rented Bike Demand in hot weather is higher compared to demand in cold weather." in status:
     st.write("-------")
@@ -129,7 +129,7 @@ if "1: Rented Bike Demand in hot weather is higher compared to demand in cold we
         st.write("Since p-value is greater than 0.05, we fail to reject the null hypothesis.")
         st.write("i.e., There is no significant difference in demand for bike rentals in hot weather compared to demand in cold weather.")
 
-elif "2. Rented Bike Demand during rush hour (7-9 AM & 5-7 PM) and non-rush hour are different." in status:
+elif "2: Rented Bike Demand during rush hour (7-9 AM & 5-7 PM) and non-rush hour are different." in status:
     st.write("-------")
     rush_hour = df[(df['Hour'] >= 7) & (df['Hour'] <= 9) | (df['Hour'] >= 17) & (df['Hour'] <= 19)]['Rented Bike Count']
     non_rush_hour = df[~((df['Hour'] >= 7) & (df['Hour'] <= 9) | (df['Hour'] >= 17) & (df['Hour'] <= 19))]['Rented Bike Count']
