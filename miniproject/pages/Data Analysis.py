@@ -115,7 +115,7 @@ if "1: Rented Bike Demand in hot weather is higher compared to demand in cold we
     t_stat, p_val = ttest_ind(hot_temps, cold_temps, equal_var=False)
     st.write('Test Statistic:', t_stat)
     st.write('p-value:', p_val)
-    st.write("-------"
+    st.write("-------")
     if p_val < 0.05:
         st.write("Since p-value is less than 0.05, we reject the null hypothesis.")
         st.write("i.e., Rented Bike Demand in hot weather is higher compared to demand in cold weather.")
