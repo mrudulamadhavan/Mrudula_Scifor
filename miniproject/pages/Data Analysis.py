@@ -11,7 +11,7 @@ from scipy.stats import ttest_ind, f_oneway
 
 # absolute path to this file
 
-FILE_DIR = os.path.dirname(os.path.abspath("miniproject//pages//Data Analysis.py"))
+FILE_DIR = os.path.dirname(os.path.abspath("miniproject//pages//DataAnalysis.py"))
 # absolute path to this file's root directory
 PARENT_DIR = os.path.join(FILE_DIR, os.pardir)
 # absolute path of directory_of_interest
