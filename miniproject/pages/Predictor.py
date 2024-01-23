@@ -34,8 +34,8 @@ df1 = df.copy()
 
 # ['Temperature(°C)', 'Humidity(%)', 'Wind speed (m/s)','Solar Radiation (MJ/m2)', 'Visibility (10m)', 'Month', 'Weekday','Hour', 'Holiday', 'Seasons', 'Rented Bike Count']
 
-def prediction(season,month,weekday,hour,temperature,humidity,visibility,windspeed,solarrdn,rainfall,snowfall):
-    prediction = xgb.predict([[season,month,weekday,hour,temperature,humidity,visibility,windspeed,solarrdn,rainfall,snowfall]])
+def prediction(season,month,weekday,hour,holiday,temperature,humidity,visibility,windspeed,solarrdn,rainfall):
+    prediction = xgb.predict([[season,month,weekday,hour,holiday,temperature,humidity,visibility,windspeed,solarrdn]])
     print(prediction)
     return prediction
 
@@ -91,6 +91,36 @@ def replace_season(season):
 df['Seasons'] = df['Seasons'].apply(replace_season)
 sample['Seasons'] = sample['Seasons'].apply(replace_season)
 
+def month_name(month):
+    if month == 'January':
+        return 1.0
+    elif month ==  'February':
+        return 2.0
+    elif month == 'March':
+        return 3.0
+    elif month == 'April':
+        return 4.0
+    elif month == 'May':
+        return 5.0
+    elif month == 'June':
+        return 6.0
+    elif month == 'July':
+        return 7.0
+    elif month == 'August':
+        return 8.0
+    elif month == 'September':
+        return 9.0
+    elif month == 'October':
+        return 10.0
+    elif month == 'November':
+        return 11.0
+    else:
+        return 12.0
+
+df['Month'] = df['Month'].apply(month_name).astype('float64')
+sample['Month'] = sample['Month'].apply(month_name).astype('float64')
+
+
 def replace_weekday(weekday):
     if weekday =='Sunday':
         return 1.0
@@ -111,12 +141,12 @@ sample['Weekday'] = sample['Weekday'].apply(replace_weekday).astype('float64')
 
 # Function to distribute hour
 def distribute_hour(hour):
-    if 17 <= hour <= 22:
-        return 4.0  # 'Evening'
-    elif 7 <= hour <= 10:
-        return  2.0 # 'Morning'
-    elif 11 <= hour <= 16:
-        return  3.0 #'Afternoon'
+    if hour == 'Evening':
+        return 4.0  # 
+    elif hour == 'Morning':
+        return  2.0 # 
+    elif hour == 'Afternoon':
+        return  3.0 #
     else:
         return 1.0  #'Night'
 
@@ -125,8 +155,13 @@ def distribute_hour(hour):
 df['Hour'] = df['Hour'].apply(distribute_hour).astype('float64')
 sample['Hour'] = sample['Hour'].apply(distribute_hour).astype('float64')
 
-df['Month'] = df['Month'].astype('float64')
-sample['Month'] = sample['Month'].astype('float64')
+def replace_holiday(holiday):
+    if holiday =='No':
+        return 0.0
+    else:
+        return 1.0
+df['Holiday'] = df['Holiday'].apply(replace_holiday)
+sample['Holiday'] = sample['Holiday'].apply(replace_holiday)
 
 df['Wind speed (m/s)'] = np.sqrt(df['Wind speed (m/s)'])
 sample['Wind speed (m/s)'] = np.sqrt(sample['Wind speed (m/s)'])
@@ -145,37 +180,29 @@ numeric_columns = df.select_dtypes(include=['number']).columns
 df = df[numeric_columns].copy()  # Create a copy to avoid modifying the original DataFrame
 
 
-# Drop rows with null values
-df = df.dropna()
+
 #Split data into X and y
 X=df.drop('Rented Bike Count', axis=1).values
 y=df['Rented Bike Count'].values
 
-# Check if there are any null values left
-if X.isnull().sum().sum() > 0:
-    st.error("There are still missing values in the data. Please handle them before fitting the scaler.")
+#Standarizing the features
+std=StandardScaler()
+std_fit=std.fit(X)
+X=std_fit.transform(X)
+
+# Splitting data into 75:25 ratio
+X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.25, random_state=0)
+
+xgb = pickle.load(open('miniproject/xgb_model.pkl','rb'))
+
+
+#Standardize the features
+sample=sample.values
+sample=std_fit.transform(sample)
+
+#Prediction
+if st.button('Predict Demand'):
+    bike_count = prediction(season, month, weekday, hour, temperature, humidity, visibility, windspeed, solarrdn, rainfall, snowfall)   
+    st.subheader(":blue[The Predicted Value for Bike Rentals :] :green[{}]".format("$ " + str(bike_count[0].round(2))))
 else:
-    # Standardizing the features
-    std = StandardScaler()
-    std_fit = std.fit(X)
-    X = std_fit.transform(X)
-
-    # Splitting data into 75:25 ratio
-    X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.25, random_state=0)
-
-    xgb = pickle.load(open('miniproject/xgb_model.pkl','rb'))
-    
-    #Train the model
-    #xgb=XGBRegressor(learning_rate=0.15, n_estimators=50, max_leaves=0, random_state=42)
-    #xgb.fit(X,y)
-    
-    #Standardize the features
-    sample=sample.values
-    sample=std_fit.transform(sample)
-    
-    #Prediction
-    if st.button('Predict Demand'):
-        bike_count = prediction(season, month, weekday, hour, temperature, humidity, visibility, windspeed, solarrdn, rainfall, snowfall)   
-        st.subheader(":blue[The Predicted Value for Bike Rentals :] :green[{}]".format("$ " + str(bike_count[0].round(2))))
-    else:
-        pass
+    pass
