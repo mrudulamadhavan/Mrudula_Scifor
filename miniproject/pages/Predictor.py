@@ -200,7 +200,7 @@ st.write("")
 #Prediction
 if st.button('Predict Demand',key = "<uniquevalueofsomesort>"):
     bike_count=xgb.predict(sample)
-    bike_count=bike_count[0].round()    
+    bike_count=bike_count[0] 
     st.subheader(":blue[The Predicted Value for Bike Rentals :] :green[{}]".format(str(bike_count)))
 else:
     pass
