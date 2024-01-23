@@ -40,7 +40,7 @@ def prediction(season,month,weekday,hour,holiday,temperature,humidity,visibility
     return prediction
 
 # ------------------------------------------------------------------------------------------------------------
-st.subheader("Enter the details :")
+st.subheader("Enter the location details :")
 
 col1,col2,col3 = st.columns(3)
 with col1:  
@@ -170,16 +170,6 @@ sample['Holiday'] = sample['Holiday'].apply(replace_holiday)
 
 df['Wind speed (m/s)'] = np.sqrt(df['Wind speed (m/s)'])
 sample['Wind speed (m/s)'] = np.sqrt(sample['Wind speed (m/s)'])
-# Standardizing the required column
-#df['Temperature(°C)'] = StandardScaler().fit_transform(df['Temperature(°C)'].values.reshape(-1, 1))
-#sample['Temperature(°C)'] = sample['Temperature(°C)'].values.reshape(-1, 1))
-#df['Humidity(%)'] = StandardScaler().fit_transform(df['Humidity(%)'].values.reshape(-1, 1))
-#sample['Humidity(%)'] = StandardScaler().fit_transform(sample['Humidity(%)'].values.reshape(-1, 1))
-
-# Normalizing the required column
-#df['Visibility (10m)'] = StandardScaler().fit_transform(df['Visibility (10m)'].values.reshape(-1, 1))
-#sample['Visibility (10m)'] = StandardScaler().fit_transform(sample['Visibility (10m)'].values.reshape(-1, 1))
-
 
 #Split data into X and y
 X=df.drop('Rented Bike Count', axis=1).values
@@ -196,7 +186,6 @@ X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.25, random
 #Train the model
 xgb=XGBRegressor(learning_rate=0.15, n_estimators=50, max_leaves=0, random_state=42)
 xgb.fit(X,y)
-
 
 #Standardize the features
 sample=sample.values
