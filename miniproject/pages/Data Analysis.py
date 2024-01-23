@@ -2,6 +2,7 @@ import streamlit as st
 from matplotlib import image
 import matplotlib.pyplot as plt
 import pandas as pd
+import statsmodels.api as sm
 
 import seaborn as sns
 import plotly.express as px
