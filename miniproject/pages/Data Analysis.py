@@ -74,10 +74,9 @@ plt.title("Rented Bike Count Trend by Hour for Weekdays", fontsize=15)
 st.pyplot()
 st.write('The bike rental pattern of weekdays and weekends is different.In the weekend the demand becomes high in the afternoon and the demand for office timings is high during weekdays.')
 st.write("------------------------------------------------------------------------------------")
+st.subheader('        Regression Plots :  Rented Bike Count vs Independent Variables')
 # Set up subplots
 fig, axes = plt.subplots(nrows=2, ncols=4, figsize=(15, 8))
-fig.suptitle('Regression Plots: Rented Bike Count vs Independent Variables',fontsize=25)
-
 # Flatten the axes for easy iteration
 axes = axes.flatten()
 
