@@ -194,7 +194,7 @@ xgb = pickle.load(open('miniproject/xgb_model.pkl','rb'))
 #Standardize the features
 sample=sample.values
 sample=std_fit.transform(sample)
-
+st.write("")
 #Prediction
 if st.button('Predict Demand'):
     bike_count = prediction(season, month, weekday, hour,holiday, temperature, humidity, visibility, windspeed, solarrdn)   
