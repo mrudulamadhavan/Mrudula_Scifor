@@ -120,55 +120,31 @@ fig_2 = px.box(df[df['Hour'] == hourtype], y=target_variable)
 col2.plotly_chart(fig_2, use_container_width=True)        
 st.write("-------------------------------------------------------------------------------------------")   
 
-status = st.radio("Click to know more : ",('Correlation Heatmap','Regression Plot','Hypothesis Testing Results'))
-if (status == 'Correlation Heatmap'):
-    # Display the correlation heatmap using Seaborn
-    corr = df.corr()
-    mask = np.array(corr)
-    mask[np.tril_indices_from(mask)] = False
-    f, ax = plt.subplots(figsize=(20, 6))
-    heatmap = sns.heatmap(corr, annot = True, fmt='.3f',mask=mask, cmap='mako',cbar=True )
-    heatmap.set_title('Correlation Heatmap', pad=15)
-    st.pyplot(f)
-
-elif (status == 'Regression Plot'):
-    # # Selecting numeric features for regression plots
-    numeric_features = ['Temperature(°C)', 'Humidity(%)', 'Wind speed (m/s)',
-                        'Visibility (10m)', 'Dew point temperature(°C)',
-                        'Solar Radiation (MJ/m2)', 'Rainfall(mm)', 'Snowfall (cm)','Rented Bike Count']
-    dependent_variable = 'Rented Bike Count'
-
-    # Regression plots for independent variables
-    st.subheader('Regression Plot')    
-    n = 1
-    plt.figure(figsize=(12, 15))
-    for i in numeric_features:
-        if i == 'Rented Bike Count':
-            pass
-        else:
-            plt.subplot(4, 2, n)
-            n += 1
-            sns.regplot(x= df[i], y= df['Rented Bike Count'], line_kws={"color": "red"},scatter_kws={'çolor':'violet'})
-            plt.title(f'Rented Bike Count vs {i}')
-    # Display the plots in the Streamlit app
-    st.pyplot()
-
-else:
-    st.subheader('Hypothesis Testing Results')
-    st.write('Hypothesis testing is a statistical method used to make inferences or draw conclusions about a population based on a sample of data. The process involves formulating a hypothesis about the population parameter, collecting and analyzing data, and then using statistical tests to determine whether there is enough evidence to reject the null hypothesis in favor of an alternative hypothesis.')
-    st.write('Based on the exploratory analysis conducted using charts, we formulated three hypothetical statements about the dataset and subsequently conducted hypothesis testing through code and statistical methods to draw conclusive results regarding these statements.')
-    status = st.radio("Hypothetical Statements : ", ('1: Rented Bike Demand in hot weather is higher compared to demand in cold weather.','2. Rented Bike Demand during rush hour (7-9 AM & 5-7 PM) and non-rush hour are different.','3. Rented Bike Demand is different in different seasons with highest in summer and lowest in winter.'))
+# Display the correlation heatmap using Seaborn
+corr = df.corr()
+mask = np.array(corr)
+mask[np.tril_indices_from(mask)] = False
+f, ax = plt.subplots(figsize=(20, 6))
+heatmap = sns.heatmap(corr, annot = True, fmt='.3f',mask=mask, cmap='mako',cbar=True )
+heatmap.set_title('Correlation Heatmap', pad=15)
+st.pyplot(f)
+st.write('')
     
-    if (status == '1: Rented Bike Demand in hot weather is higher compared to demand in cold weather.'):
-        # Split the data into the 'hot' and 'cold' temperature groups
-        hot_temps = df[df['Temperature(°C)'] >= 20]['Rented Bike Count']
-        cold_temps = df[df['Temperature(°C)'] < 20]['Rented Bike Count']
-        st.write('Null Hypothesis : Rented Bike Demand in hot weather is higher compared to demand in cold weather.')
-        st.write('Alternate Hypothesis : No significant difference in demand for Bike rentals in hot weather compared to demand in cold weather.')
-        st.text("Two-sample T-test")
-        st.text('alpha = 0.05')        
-        # Perform the t-test
-        t_stat, p_val = ttest_ind(hot_temps, cold_temps, equal_var=False)
+st.subheader('Hypothesis Testing Results')
+st.write('Hypothesis testing is a statistical method used to make inferences or draw conclusions about a population based on a sample of data. The process involves formulating a hypothesis about the population parameter, collecting and analyzing data, and then using statistical tests to determine whether there is enough evidence to reject the null hypothesis in favor of an alternative hypothesis.')
+st.write('Based on the exploratory analysis conducted using charts, we formulated three hypothetical statements about the dataset and subsequently conducted hypothesis testing through code and statistical methods to draw conclusive results regarding these statements.')
+status = st.radio("Choose any Hypothetical Statements : ", ('1: Rented Bike Demand in hot weather is higher compared to demand in cold weather.','2. Rented Bike Demand during rush hour (7-9 AM & 5-7 PM) and non-rush hour are different.','3. Rented Bike Demand is different in different seasons with highest in summer and lowest in winter.'))
+
+if (status == '1: Rented Bike Demand in hot weather is higher compared to demand in cold weather.'):
+    # Split the data into the 'hot' and 'cold' temperature groups
+    hot_temps = df[df['Temperature(°C)'] >= 20]['Rented Bike Count']
+    cold_temps = df[df['Temperature(°C)'] < 20]['Rented Bike Count']
+    st.write(':red[Null Hypothesis] : Rented Bike Demand in hot weather is higher compared to demand in cold weather.')
+    st.write(':red[Alternate Hypothesis] : No significant difference in demand for Bike rentals in hot weather compared to demand in cold weather.')
+    st.text("Two-sample T-test")
+    st.text('alpha = 0.05')        
+    # Perform the t-test
+    t_stat, p_val = ttest_ind(hot_temps, cold_temps, equal_var=False)
         st.text('Test Statistic :',t_stat)
         st.text('p-value :',p_val)
         if p_val < 0.05:
@@ -182,8 +158,8 @@ else:
         # Create subsets of the data based on hour
         rush_hour = df[(df['Hour'] >= 7) & (df['Hour'] <= 9) | (df['Hour'] >= 17) & (df['Hour'] <= 19)]['Rented Bike Count']
         non_rush_hour = df[~((df['Hour'] >= 7) & (df['Hour'] <= 9) | (df['Hour'] >= 17) & (df['Hour'] <= 19))]['Rented Bike Count']  
-        st.write('Null Hypothesis : Rented Bike Demand during rush hour (7-9 AM & 5-7 PM) and non-rush hour are different.')
-        st.write('Alternate Hypothesis : No significant difference in demand for bike rentals during rush hour (7-9 AM & 5-7 PM) compared to demand in non-rush hour.')
+        st.write(':green[Null Hypothesis] : Rented Bike Demand during rush hour (7-9 AM & 5-7 PM) and non-rush hour are different.')
+        st.write(':green[Alternate Hypothesis] : No significant difference in demand for bike rentals during rush hour (7-9 AM & 5-7 PM) compared to demand in non-rush hour.')
         st.text("Two-sample T-test")
         st.text('alpha = 0.05')
         
@@ -200,9 +176,9 @@ else:
 
     else:
 
-        st.write('Null Hypothesis :  Rented Bike Demand is different in different seasons with highest in summer and lowest in winter.')
-        st.write('Alternate Hypothesis : No significant difference in demand for bike rentals in different seasons with highest in summer and lowest in winter.')
-        st.test('One-way ANOVA test')
+        st.write(':red[Null Hypothesis] :  Rented Bike Demand is different in different seasons with highest in summer and lowest in winter.')
+        st.write(':red[Alternate Hypothesis] : No significant difference in demand for bike rentals in different seasons with highest in summer and lowest in winter.')
+        st.text('One-way ANOVA test')
         st.text('alpha = 0.05')
         # Conduct the ANOVA test
         f_stat, p_value = f_oneway(df.loc[df['Seasons']=='Spring', 'Rented Bike Count'],
