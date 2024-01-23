@@ -115,46 +115,49 @@ if "1: Rented Bike Demand in hot weather is higher compared to demand in cold we
     t_stat, p_val = ttest_ind(hot_temps, cold_temps, equal_var=False)
     st.write('Test Statistic:', t_stat)
     st.write('p-value:', p_val)
+    st.write("-------"
     if p_val < 0.05:
-        st.text("Since p-value is less than 0.05, we reject the null hypothesis.")
-        st.text("i.e., Rented Bike Demand in hot weather is higher compared to demand in cold weather.")
+        st.write("Since p-value is less than 0.05, we reject the null hypothesis.")
+        st.write("i.e., Rented Bike Demand in hot weather is higher compared to demand in cold weather.")
     else:
-        st.text("Since p-value is greater than 0.05, we fail to reject the null hypothesis.")
-        st.text("i.e., There is no significant difference in demand for bike rentals in hot weather compared to demand in cold weather.")
+        st.write("Since p-value is greater than 0.05, we fail to reject the null hypothesis.")
+        st.write("i.e., There is no significant difference in demand for bike rentals in hot weather compared to demand in cold weather.")
 
 elif "2. Rented Bike Demand during rush hour (7-9 AM & 5-7 PM) and non-rush hour are different." in status:
     rush_hour = df[(df['Hour'] >= 7) & (df['Hour'] <= 9) | (df['Hour'] >= 17) & (df['Hour'] <= 19)]['Rented Bike Count']
     non_rush_hour = df[~((df['Hour'] >= 7) & (df['Hour'] <= 9) | (df['Hour'] >= 17) & (df['Hour'] <= 19))]['Rented Bike Count']
     st.write(':red[Null Hypothesis]: Rented Bike Demand during rush hour (7-9 AM & 5-7 PM) and non-rush hour are different.')
     st.write(':red[Alternate Hypothesis]: No significant difference in demand for bike rentals during rush hour (7-9 AM & 5-7 PM) compared to demand in non-rush hour.')
-    st.text("Two-sample T-test")
+    st.text("Test Type : Two-sample T-test")
     st.text('alpha = 0.05')
     t_stat, p_val = ttest_ind(rush_hour, non_rush_hour, equal_var=False)
-    st.text('Test Statistic:', t_stat)
-    st.text('p-value:', p_val)
+    st.write('Test Statistic:', t_stat)
+    st.write('p-value:', p_val)
+    st.write("-----")
     if p_val < 0.05:
-        st.text("Since p-value is less than 0.05, we reject the null hypothesis.")
-        st.text("i.e., Rented Bike Demand during rush hour (7-9 AM & 5-7 PM) and non-rush hour are different.")
+        st.write("Since p-value is less than 0.05, we reject the null hypothesis.")
+        st.write("i.e., Rented Bike Demand during rush hour (7-9 AM & 5-7 PM) and non-rush hour are different.")
     else:
-        st.text("Since p-value is greater than 0.05, we fail to reject the null hypothesis.")
-        st.text("i.e., There is no significant difference in demand for bike rentals during rush hour compared to non-rush hour.")
+        st.write("Since p-value is greater than 0.05, we fail to reject the null hypothesis.")
+        st.write("i.e., There is no significant difference in demand for bike rentals during rush hour compared to non-rush hour.")
 
 else:
     st.write(':red[Null Hypothesis]: Rented Bike Demand is different in different seasons with highest in summer and lowest in winter.')
     st.write(':red[Alternate Hypothesis]: No significant difference in demand for bike rentals in different seasons with highest in summer and lowest in winter.')
-    st.text('One-way ANOVA test')
+    st.text("Test Type : One-way ANOVA Test")
     st.text('alpha = 0.05')
     f_stat, p_value = f_oneway(df.loc[df['Seasons'] == 'Spring', 'Rented Bike Count'],
                                 df.loc[df['Seasons'] == 'Summer', 'Rented Bike Count'],
                                 df.loc[df['Seasons'] == 'Autumn', 'Rented Bike Count'],
                                 df.loc[df['Seasons'] == 'Winter', 'Rented Bike Count'])
-    st.text('Test Statistic:', f_stat)
-    st.text('p-value:', p_value)
+    st.write('Test Statistic:', f_stat)
+    st.write('p-value:', p_val)
+    st.write("-----")
     if p_value < 0.05:
-        st.text("Since p-value is less than 0.05, we reject the null hypothesis.")
-        st.text("i.e., Rented Bike Demand is different in different seasons with highest in summer and lowest in winter.")
+        st.write("Since p-value is less than 0.05, we reject the null hypothesis.")
+        st.write("i.e., Rented Bike Demand is different in different seasons with highest in summer and lowest in winter.")
     else:
-        st.text("Since p-value is greater than 0.05, we fail to reject the null hypothesis.")
-        st.text("i.e., There is no significant difference in demand for bike rentals in different seasons with highest in summer and lowest in winter.")
+        st.write("Since p-value is greater than 0.05, we fail to reject the null hypothesis.")
+        st.write("i.e., There is no significant difference in demand for bike rentals in different seasons with highest in summer and lowest in winter.")
 
 
