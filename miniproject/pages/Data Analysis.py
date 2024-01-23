@@ -76,19 +76,18 @@ st.pyplot()
 st.write('The bike rental pattern of weekdays and weekends is different.In the weekend the demand becomes high in the afternoon and the demand for office timings is high during weekdays.')
 st.write("------------------------------------------------------------------------------------")
 
-col1, col2,col3 = st.columns(3)
 fig_wind_speed = px.line(df, x='Wind speed (m/s)', y='Rented Bike Count',
                          labels={'Wind speed (m/s)': 'Wind Speed (m/s)', 'Rented Bike Count': 'Avg Rented Bike Count'},
                          title='Average Rented Bike Count by Wind Speed')
-col1.plotly_chart(fig_wind_speed,use_container_width=True)
+st.plotly_chart(fig_wind_speed,use_container_width=True)
 fig_humidity = px.line(df, x='Humidity(%)', y='Rented Bike Count',
                        labels={'Humidity(%)': 'Humidity (%)', 'Rented Bike Count': 'Avg Rented Bike Count'},
                        title='Average Rented Bike Count by Humidity')
-col2.plotly_chart(fig_humidity,use_container_width=True)
+st.plotly_chart(fig_humidity,use_container_width=True)
 fig_visibility = px.line(df, x='Visibility (10m)', y='Rented Bike Count',
                        labels={'Visibility (10m)': 'Visibility (10m)', 'Rented Bike Count': 'Avg Rented Bike Count'},
                        title='Average Rented Bike Count by Visibility')
-col3.plotly_chart(fig_visibility,use_container_width=True)
+st.plotly_chart(fig_visibility,use_container_width=True)
 
 st.write('------------------------------------------------------------------------------------')
 
