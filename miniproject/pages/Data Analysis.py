@@ -52,7 +52,7 @@ col2.plotly_chart(fig2, use_container_width=True)
 st.write('---')
 
 fig1 = px.bar(df, x='Hour', y='Rented Bike Count', color='Hour')
-col1.plotly_chart(fig1, use_container_width=True)
+st.plotly_chart(fig1, use_container_width=True)
 
 
 seasontype = st.selectbox("Select the Season:", df['Seasons'].unique())
