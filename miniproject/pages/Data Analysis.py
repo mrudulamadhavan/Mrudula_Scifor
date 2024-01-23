@@ -79,15 +79,15 @@ st.write("----------------------------------------------------------------------
 
 fig_wind_speed = px.scatter(df, x='Wind speed (m/s)', y='Rented Bike Count',
                          labels={'Wind speed (m/s)': 'Wind Speed (m/s)', 'Rented Bike Count': 'Avg Rented Bike Count'},
-                         title='Average Rented Bike Count by Wind Speed',trendline="ols")
+                         title='Average Rented Bike Count by Wind Speed')
 st.plotly_chart(fig_wind_speed,use_container_width=True)
 fig_humidity = px.scatter(df, x='Humidity(%)', y='Rented Bike Count',
                        labels={'Humidity(%)': 'Humidity (%)', 'Rented Bike Count': 'Avg Rented Bike Count'},
-                       title='Average Rented Bike Count by Humidity',trendline="ols")
+                       title='Average Rented Bike Count by Humidity')
 st.plotly_chart(fig_humidity,use_container_width=True)
 fig_visibility = px.scatter(df, x='Visibility (10m)', y='Rented Bike Count',
                        labels={'Visibility (10m)': 'Visibility (10m)', 'Rented Bike Count': 'Avg Rented Bike Count'},
-                       title='Average Rented Bike Count by Visibility',trendline="ols")
+                       title='Average Rented Bike Count by Visibility')
 st.plotly_chart(fig_visibility,use_container_width=True)
 
 st.write('------------------------------------------------------------------------------------')
