@@ -74,6 +74,32 @@ plt.title("Rented Bike Count Trend by Hour for Weekdays", fontsize=15)
 st.pyplot()
 st.write('The bike rental pattern of weekdays and weekends is different.In the weekend the demand becomes high in the afternoon and the demand for office timings is high during weekdays.')
 st.write("------------------------------------------------------------------------------------")
+# Streamlit app
+st.title("Regression Plots for Independent Variables")
+
+# Set up subplots
+fig, axes = plt.subplots(nrows=2, ncols=4, figsize=(15, 8))
+fig.suptitle('Regression Plots: Rented Bike Count vs Independent Variables')
+
+# Flatten the axes for easy iteration
+axes = axes.flatten()
+
+# Loop through numeric features for regression plots
+numeric_features = ['Temperature(°C)', 'Humidity(%)', 'Wind speed (m/s)',
+                     'Visibility (10m)', 'Dew point temperature(°C)',
+                     'Solar Radiation (MJ/m2)', 'Rainfall(mm)', 'Snowfall (cm)']
+
+for i, feature in enumerate(numeric_features):
+    sns.regplot(x=df[feature], y=df['Rented Bike Count'], line_kws={"color": "red"}, ax=axes[i])
+    axes[i].set_title(f'Rented Bike Count vs {feature}')
+    axes[i].set_xlabel(feature)
+    axes[i].set_ylabel('Avg Rented Bike Count')
+
+# Adjust layout and display the plots in Streamlit app
+plt.tight_layout()
+st.pyplot(fig)
+st.write('')
+
 
 fig_wind_speed = px.scatter(df, x='Wind speed (m/s)', y='Rented Bike Count',
                          labels={'Wind speed (m/s)': 'Wind Speed (m/s)', 'Rented Bike Count': 'Avg Rented Bike Count'},
