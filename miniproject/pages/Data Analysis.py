@@ -11,7 +11,7 @@ from scipy.stats import ttest_ind, f_oneway
 
 # absolute path to this file
 
-FILE_DIR = os.path.dirname(os.path.abspath("miniproject//pages//DataAnalysis.py"))
+FILE_DIR = os.path.dirname(os.path.abspath("miniproject//pages//Data Analysis.py"))
 # absolute path to this file's root directory
 PARENT_DIR = os.path.join(FILE_DIR, os.pardir)
 # absolute path of directory_of_interest
@@ -19,7 +19,7 @@ dir_of_interest = os.path.join(PARENT_DIR, "resources")
 
 st.title(":blue[Exploratory Data Analysis]")
 DATA_PATH = os.path.join(dir_of_interest, "data", "BikeData.csv")
-df = pd.read_csv(DATA_PATH)
+df = pd.read_csv(DATA_PATH,encoding='latin')
 
 # Convert 'Date' to datetime and create new columns
 df['Date'] = pd.to_datetime(df['Date'], format="%d/%m/%Y")
