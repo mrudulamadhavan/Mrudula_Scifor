@@ -46,7 +46,7 @@ col1,col2,col3 = st.columns(3)
 with col1:  
     season = st.selectbox("Season", df["Seasons"].unique())
 with col2:  
-    month = st.selectbox("Month", ['January', 'February', 'March', 'April', ..., 'July', 'August', 'September', 'October', 'November','December'])
+    month = st.selectbox("Month", ['January', 'February', 'March', 'April', 'May','June', 'July', 'August', 'September', 'October', 'November','December'])
 with col3:  
     weekday = st.selectbox("Weekday", ['Sunday', 'Monday', 'Tuesday', 'Wednesday','Thursday','Friday', 'Saturday'])
 
